@@ -1,5 +1,4 @@
 plugins {
-    id 'checkstyle'
     id 'java'
     id 'application'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
@@ -61,8 +60,4 @@ shadowJar {
 run {
     standardInput = System.in
     enableAssertions = true
-}
-
-checkstyle {
-    toolVersion = '10.2'
 }

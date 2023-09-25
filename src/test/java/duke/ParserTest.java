@@ -25,6 +25,7 @@ public class ParserTest {
         Parser parser = new Parser("todo read book");
         assertFalse(parser.commandOnly());
     }
+
 }
 
 

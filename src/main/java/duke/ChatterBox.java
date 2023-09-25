@@ -72,7 +72,7 @@ public class ChatterBox extends Application {
      * Constructs an empty ChatterBox object with no input parameters.
      *
      */
-    public ChatterBox() throws IOException, DukeException {
+    public ChatterBox() throws IOException {
         this(new Ui(), new TaskList(), new Storage());
         ArrayList<Task> taskList = this.tl.getTaskList();
         this.store.fileToTaskList(this.tl);
@@ -132,7 +132,7 @@ public class ChatterBox extends Application {
 
         Label firstText = new Label(ui.startScreen());
         dialogContainer.getChildren().addAll(
-                DialogBox.getDukeDialog(firstText, new ImageView(duke))
+                DialogBox.getDukeDialog(ui.startScreen(), duke)
         );
 
         //Add functionality to handle user input.
@@ -156,6 +156,7 @@ public class ChatterBox extends Application {
      * after a specified period of time.
      */
     private void handleUserInput() {
+        String userString = "\n" + "User: " + userInput.getText() + " ";
         Label userText = new Label("\n" + "User: " + userInput.getText() + " ");
         String responseString = getResponse(userInput.getText());
         Label dukeText = new Label(responseString);
@@ -174,8 +175,8 @@ public class ChatterBox extends Application {
         }
 
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(userText, new ImageView(user)),
-                DialogBox.getDukeDialog(dukeText, new ImageView(duke))
+                DialogBox.getUserDialog(userString, user),
+                DialogBox.getDukeDialog(responseString, duke)
         );
         userInput.clear();
     }
@@ -188,7 +189,7 @@ public class ChatterBox extends Application {
      * @return A String to be returned as duke's response
      *
      */
-    private String getResponse(String input) {
+    public String getResponse(String input) {
         String res = null;
         try {
             res = Parser.parseText(input, tl, store);

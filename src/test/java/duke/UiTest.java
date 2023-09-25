@@ -22,13 +22,4 @@ public class UiTest {
         System.setOut(originalOut);
     }
 
-    /*@Test
-    public void tabPrinter_HelloWorld_correctOutput() {
-        Ui ui = new Ui();
-        ui.tabPrinter("Hello World");
-
-        String expected = "      Hello World";
-        assertEquals(expected, outContent.toString());
-    }*/
-
 }
